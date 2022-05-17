@@ -18,7 +18,8 @@ jobs:
         with:
           name: build
           path: build
-  main:
+  docker:
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
