@@ -5,7 +5,7 @@ import "./header.css";
 export const Header = () => {
 	return (
 		<div className="header">
-			<img src={`${process.env.PUBLIC_URL}/logo-proto.png`} />
+			<img src={`${process.env.PUBLIC_URL}/logo-proto.png`} alt="alt" />
 
 			<h1>Portail de réponse aux enquêtes de la statistique publique</h1>
 			<div className="kfc">

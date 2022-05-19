@@ -14,7 +14,7 @@ const columns = [
 		width: 30,
 		renderCell: (cellValues) => {
 			return (
-				<a href={`${cellValues.row.access}`} target="_blank">
+				<a href={`${cellValues.row.access}`} target="_blank" rel="noreferrer">
 					Lien
 				</a>
 			);

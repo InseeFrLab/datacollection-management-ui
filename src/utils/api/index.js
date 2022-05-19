@@ -1,13 +1,15 @@
 import { rows, sleep } from "../mock/surveys";
-import { fetcher, fetcherFile } from "./fetcher";
 
-const getRequest = (url) => (token) => fetcher(url, token, "GET", null);
-const putRequest = (url) => (token) => (body) =>
+import { fetcher } from "./fetcher";
+
+/*const putRequest = (url) => (token) => (body) =>
 	fetcher(url, token, "PUT", body);
 const postRequest = (url) => (token) => (body) =>
 	fetcher(url, token, "POST", body);
 const deleteRequest = (url) => (token) => (body) =>
 	fetcher(url, token, "DELETE", body);
+*/
+const getRequest = (url) => (token) => fetcher(url, token, "GET", null);
 
 export const mockGetMySurveys = (apiUrl) => (id) => async (token) => {
 	await sleep(2000);
