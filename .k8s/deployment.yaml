@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dc-management-ui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dc-management-ui
+  template:
+    metadata:
+      labels:
+        app: dc-management-ui
+    spec:
+      containers:
+        - name: dc-management-ui
+          image: inseefrlab/datacollection-management-ui:main

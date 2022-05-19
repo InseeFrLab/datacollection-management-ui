@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: dc-management-ui-svc
+spec:
+  selector:
+    app: dc-management-ui
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
