@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Welcome } from "../Welcome";
 import { DataGrid, frFR } from "@mui/x-data-grid";
-import { getMySurveys } from "../../utils/api";
+import { mockGetMySurveys } from "../../utils/api";
 import { Typography } from "@mui/material";
 
 const columns = [
@@ -27,7 +27,7 @@ export const SurveyList = () => {
 
 	useEffect(() => {
 		const load = async () => {
-			const { data, error } = await getMySurveys()()();
+			const { data, error } = await mockGetMySurveys()()();
 			if (!error) setMySurveys(data);
 		};
 		if (!mySurveys) load();
