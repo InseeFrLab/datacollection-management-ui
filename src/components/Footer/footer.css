@@ -4,3 +4,10 @@
     flex-direction: row;
     justify-content: space-evenly;
 }
+
+.footer {
+    overflow: hidden;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }

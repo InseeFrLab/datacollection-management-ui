@@ -1,5 +1,11 @@
 import React from "react";
-import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
+import {
+	BrowserRouter,
+	Routes,
+	Route,
+	Outlet,
+	Navigate,
+} from "react-router-dom";
 import { Header } from "../Header";
 import { Footer } from "../Footer";
 import { Menu } from "../Menu";
@@ -9,6 +15,7 @@ export const Router = () => {
 	return (
 		<BrowserRouter>
 			<Routes>
+				<Route path="/" element={<Navigate to="/portail" />} />
 				<Route
 					path="/portail"
 					element={

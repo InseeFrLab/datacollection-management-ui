@@ -1,5 +1,4 @@
 import { rows, sleep } from "../mock/surveys";
-
 import { fetcher } from "./fetcher";
 
 /*const putRequest = (url) => (token) => (body) =>
@@ -18,6 +17,6 @@ export const mockGetMySurveys = (apiUrl) => (id) => async (token) => {
 
 export const getMySurveys = (apiUrl) => (id) => async (token) => {
 	return getRequest(
-		"https://datacollection-management-api.dev.insee.io/my-surveys/toto"
+		`https://datacollection-management-api.dev.insee.io/mySurveys/${id}`
 	)();
 };
