@@ -10,6 +10,7 @@ import { Header } from "../Header";
 import { Footer } from "../Footer";
 import { Menu } from "../Menu";
 import { SurveyList } from "../SurveyList";
+import { UserAccount } from "../UserAccount";
 
 export const Router = () => {
 	return (
@@ -27,15 +28,8 @@ export const Router = () => {
 						</>
 					}
 				>
-					<Route
-						path="mes-enquetes"
-						element={
-							<>
-								<SurveyList />
-							</>
-						}
-					/>
-					<Route path="mon-compte" element={<h1>mon compte</h1>} />
+					<Route path="mes-enquetes" element={<SurveyList />} />
+					<Route path="mon-compte" element={<UserAccount />} />
 				</Route>
 			</Routes>
 		</BrowserRouter>
