@@ -6,8 +6,8 @@ import { Typography } from "@mui/material";
 
 const columns = [
 	{ field: "surveyUnitId", headerName: "Référence unité enquêtée", width: 200 },
-	{ field: "surveyName", headerName: "Nom de l'enquête", width: 400 },
-	{ field: "reporting", headerName: "Suivi", width: 300 },
+	{ field: "surveyWording", headerName: "Nom de l'enquête", width: 400 },
+	{ field: "monitoringDate", headerName: "Suivi", width: 300 },
 	{
 		field: "access",
 		headerName: "Accès",
@@ -27,8 +27,7 @@ export const SurveyList = () => {
 
 	useEffect(() => {
 		const load = async () => {
-			const { data, error } = await getMySurveys()("R0CANV5")();
-			console.log(data);
+			const { data, error } = await getMySurveys()("Z9ZURE2")();
 			if (!error) setMySurveys(data);
 		};
 		if (!mySurveys) load();
@@ -44,6 +43,7 @@ export const SurveyList = () => {
 						localeText={frFR.components.MuiDataGrid.defaultProps.localeText}
 						rows={mySurveys}
 						columns={columns}
+						getRowId={(row) => row.surveyUnitId}
 					/>
 				)}
 				{!mySurveys && <Typography>Chargement en cours ...</Typography>}
