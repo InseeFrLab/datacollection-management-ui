@@ -1,13 +1,16 @@
+.footer {
+    overflow: hidden;
+    bottom: 0;
+    width: 100%;
+    border-top: 2px dashed orangered;
+    margin-top : 1em;
+  }
+
 
 .footer ul {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    list-style: none;
 }
 
-.footer {
-    overflow: hidden;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-  }
