@@ -4,9 +4,20 @@ import { mockGetFilteredContacts } from "../../utils/api";
 import { Typography } from "@mui/material";
 
 const columns = [
-	{ field: "id", headerName: "Idec", width: 200 },
-	{ field: "lastName", headerName: "Nom", width: 400 },
-	{ field: "firstName", headerName: "Prénom", width: 300 },
+	{
+		field: "id",
+		headerName: "Idec",
+		width: 80,
+		renderCell: (cellValues) => {
+			return (
+				<a href={`/pilotage/contacts/${cellValues.row.id}`} rel="noreferrer">
+					{cellValues.row.id}
+				</a>
+			);
+		},
+	},
+	{ field: "lastName", headerName: "Nom", width: 200 },
+	{ field: "firstName", headerName: "Prénom", width: 200 },
 	{ field: "email", headerName: "Email", width: 300 },
 	{
 		field: "campaign",
@@ -14,7 +25,7 @@ const columns = [
 		width: 30,
 		renderCell: (cellValues) => {
 			return (
-				<a href={`${cellValues.row.access}`} target="_blank" rel="noreferrer">
+				<a href={`/${cellValues.row.access}`} target="_blank" rel="noreferrer">
 					Lien
 				</a>
 			);

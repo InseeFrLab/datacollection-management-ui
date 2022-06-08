@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { ContactsSearchForm } from "../ContactsSearchForm";
 import { ContactsSearchResults } from "../ContactsSearchResults";
 
-export const Contacts = () => {
+export const ContactsSearch = () => {
 	const [formValues, setFormValues] = useState(null);
 
 	const handleOnClickSearchButton = (formValues) => {
@@ -12,8 +12,6 @@ export const Contacts = () => {
 	};
 
 	const handleOnClickCancelButton = (formValues) => {
-		console.log("toto");
-		console.log(formValues);
 		setFormValues(formValues);
 	};
 	return (

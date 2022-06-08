@@ -13,7 +13,7 @@ import {
 } from "../../utils/mock/select-items";
 const defaultValues = {
 	contactId: "",
-	lastName: "Doe",
+	lastName: "",
 	firstName: "",
 	mail: "",
 	surveyUnitId: "",
@@ -24,7 +24,7 @@ const defaultValues = {
 	period: "",
 };
 
-export const ContactsForm = () => {
+export const ContactsUpdateForm = ({ idec }) => {
 	const [formValues, setFormValues] = useState(defaultValues);
 
 	const handleChange = (e) => {
@@ -39,6 +39,7 @@ export const ContactsForm = () => {
 	};
 	return (
 		<>
+			<h3>Détail du contact</h3>
 			<Box
 				component="form"
 				sx={{
@@ -50,28 +51,54 @@ export const ContactsForm = () => {
 				<FormControl variant="standard">
 					<InputLabel htmlFor="component-simple">Idec</InputLabel>
 					<Input
-						id="component-simple"
+						id="filled-read-only-input"
 						name="contactId"
-						value={formValues.contactId}
+						value={idec}
+						onChange={handleChange}
+						InputProps={{
+							readOnly: true,
+						}}
+					/>
+				</FormControl>
+				<FormControl variant="standard">
+					<InputLabel htmlFor="component-simple">Nom</InputLabel>
+					<Input
+						id="component-simple"
+						name="lastName"
+						value={formValues.lastName}
 						onChange={handleChange}
 					/>
 				</FormControl>
-
-				<FormControl>
-					<FormControl variant="standard">
-						<InputLabel htmlFor="component-simple">Source</InputLabel>
-						<Select name="year" value={formValues.year} onChange={handleChange}>
-							{yearItems.map((item) => (
-								<MenuItem key={item.key} value={item.value}>
-									{item.label}
-								</MenuItem>
-							))}
-						</Select>
-					</FormControl>
+				<FormControl variant="standard">
+					<InputLabel htmlFor="component-simple">Prenom</InputLabel>
+					<Input
+						id="component-simple"
+						name="firstName"
+						value={formValues.firstName}
+						onChange={handleChange}
+					/>
+				</FormControl>
+				<FormControl variant="standard">
+					<InputLabel htmlFor="component-simple">Fonction</InputLabel>
+					<Input
+						id="component-simple"
+						name="position"
+						value={formValues.position}
+						onChange={handleChange}
+					/>
+				</FormControl>
+				<FormControl variant="standard">
+					<InputLabel htmlFor="component-simple">Mail</InputLabel>
+					<Input
+						id="component-simple"
+						name="mail"
+						value={formValues.mail}
+						onChange={handleChange}
+					/>
 				</FormControl>
 			</Box>
 			<Button variant="outlined" color="primary" type="submit">
-				Lancer la recherche
+				Valider
 			</Button>
 			<Button
 				variant="outlined"
@@ -80,9 +107,6 @@ export const ContactsForm = () => {
 				onClick={resetForm}
 			>
 				Annuler
-			</Button>
-			<Button variant="outlined" color="primary" type="submit">
-				Ajouter un contact
 			</Button>
 		</>
 	);

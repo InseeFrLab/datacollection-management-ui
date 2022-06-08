@@ -10,7 +10,8 @@ import { Header } from "../Header";
 import { Footer } from "../Footer";
 import { Menu } from "../Menu";
 import { Users } from "../Users";
-import { Contacts } from "../Contacts";
+import { ContactsSearch } from "../ContactsSearch";
+import { ContactsDetail } from "../ContactsDetail";
 import { Surveys } from "../Surveys";
 import { BreadCrumbs } from "../BreadCrumbs";
 
@@ -33,7 +34,8 @@ export const Router = () => {
 				>
 					<Route path="enquetes" element={<Surveys />} />
 					<Route path="utilisateurs" element={<Users />} />
-					<Route path="contacts" element={<Contacts />} />
+					<Route path="contacts" element={<ContactsSearch />} />
+					<Route path="contacts/:idec" element={<ContactsDetail />}></Route>
 				</Route>
 			</Routes>
 		</BrowserRouter>
