@@ -7,19 +7,22 @@ const readJsonResponse = async (response) => {
 	}
 };
 
-export const fetcher = async (url, token, method, body) => {
+export const fetcher = async (url, params, token, method, body) => {
 	const headers = {
 		Accept: "application/json",
 		"Content-Type": "application/json",
 	};
 	try {
-		const response = await fetch(url, {
-			headers: token
-				? { ...headers, Authorization: `Bearer ${token}` }
-				: headers,
-			method,
-			body: body ? JSON.stringify(body) : null,
-		});
+		const response = await fetch(
+			params ? `${url}?${new URLSearchParams(params)}` : url,
+			{
+				headers: token
+					? { ...headers, Authorization: `Bearer ${token}` }
+					: headers,
+				method,
+				body: body ? JSON.stringify(body) : null,
+			}
+		);
 		const { ok, status, statusText } = response;
 		if (ok) {
 			try {

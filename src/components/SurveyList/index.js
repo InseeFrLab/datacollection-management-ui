@@ -14,7 +14,16 @@ const columns = [
 		width: 30,
 		renderCell: (cellValues) => {
 			return (
-				<a href={`${cellValues.row.access}`} target="_blank" rel="noreferrer">
+				// <a href={`${cellValues.row.access}`} target="_blank" rel="noreferrer">
+				// 	Lien
+				// </a>
+				<a
+					href={
+						"https://stromae-v2.dev.insee.io/visualize?questionnaire=https%3A%2F%2Fpogues-back-office.dev.insee.io%2Fapi%2Fpersistence%2Fquestionnaire%2Fjson-lunatic%2Fkzqsw3qa-q-0-1647855585412"
+					}
+					target="_blank"
+					rel="noreferrer"
+				>
 					Lien
 				</a>
 			);

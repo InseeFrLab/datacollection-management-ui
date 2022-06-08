@@ -5,8 +5,12 @@ import "./menu.css";
 export const Menu = () => {
 	return (
 		<div className="navigation">
-			<NavLink to="/portail/mes-enquetes">Mes enquêtes</NavLink>
-			<NavLink to="/portail/mon-compte">Mon compte</NavLink>
+			<NavLink to="/pilotage">Accueil</NavLink>
+			<NavLink to="/pilotage/enquetes">Gérer des enquêtes</NavLink>
+			<NavLink to="/pilotage/utilisateurs">
+				Gérer des utilisateurs internes
+			</NavLink>
+			<NavLink to="/pilotage/contacts">Gérer des contacts</NavLink>
 		</div>
 	);
 };

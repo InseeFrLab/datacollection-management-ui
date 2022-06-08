@@ -1,4 +1,4 @@
-import { rows, sleep } from "../mock/surveys";
+import { rows, filteredRows, sleep } from "../mock/contacts";
 import { fetcher } from "./fetcher";
 
 /*const putRequest = (url) => (token) => (body) =>
@@ -10,13 +10,26 @@ const deleteRequest = (url) => (token) => (body) =>
 */
 const getRequest = (url) => (token) => fetcher(url, token, "GET", null);
 
-export const mockGetMySurveys = (apiUrl) => (id) => async (token) => {
+export const mockGetContacts = (apiUrl) => (id) => async (token) => {
 	await sleep(2000);
 	return { data: rows, status: 200, statusText: "ok", error: false };
 };
 
-export const getMySurveys = (apiUrl) => (id) => async (token) => {
+export const mockGetFilteredContacts = (apiUrl) => (id) => async (token) => {
+	await sleep(2000);
+	return { data: filteredRows, status: 200, statusText: "ok", error: false };
+};
+
+export const getContacts = (apiUrl) => (params) => (id) => async (token) => {
 	return getRequest(
-		`https://datacollection-management-api.dev.insee.io/mySurveys/${id}`
+		`https://datacollection-management-api.dev.insee.io/contacts`
 	)();
 };
+
+export const getFilteredContacts =
+	(apiUrl) => (params) => (id) => async (token) => {
+		return getRequest(
+			`https://datacollection-management-api.dev.insee.io/contacts/search`,
+			{ survey: "", name: "", idec: "" }
+		)();
+	};

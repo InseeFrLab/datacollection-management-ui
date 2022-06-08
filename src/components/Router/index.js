@@ -9,27 +9,31 @@ import {
 import { Header } from "../Header";
 import { Footer } from "../Footer";
 import { Menu } from "../Menu";
-import { SurveyList } from "../SurveyList";
-import { UserAccount } from "../UserAccount";
+import { Users } from "../Users";
+import { Contacts } from "../Contacts";
+import { Surveys } from "../Surveys";
+import { BreadCrumbs } from "../BreadCrumbs";
 
 export const Router = () => {
 	return (
 		<BrowserRouter>
 			<Routes>
-				<Route path="/" element={<Navigate to="/portail" />} />
+				<Route path="/" element={<Navigate to="/pilotage" />} />
 				<Route
-					path="/portail"
+					path="/pilotage"
 					element={
 						<>
 							<Header />
 							<Menu />
+							<BreadCrumbs />
 							<Outlet />
 							<Footer />
 						</>
 					}
 				>
-					<Route path="mes-enquetes" element={<SurveyList />} />
-					<Route path="mon-compte" element={<UserAccount />} />
+					<Route path="enquetes" element={<Surveys />} />
+					<Route path="utilisateurs" element={<Users />} />
+					<Route path="contacts" element={<Contacts />} />
 				</Route>
 			</Routes>
 		</BrowserRouter>
