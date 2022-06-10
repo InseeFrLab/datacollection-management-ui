@@ -10,12 +10,13 @@ import {
 	yearItems,
 	periodItems,
 	sourceItems,
-} from "../../utils/mock/select-items";
+} from "core/mock/select-items";
+
 const defaultValues = {
 	contactId: "",
 	lastName: "",
 	firstName: "",
-	mail: "",
+	email: "",
 	surveyUnitId: "",
 	siren: "",
 	companyName: "",
@@ -82,8 +83,8 @@ export const ContactsSearchForm = ({
 						<InputLabel htmlFor="component-simple">Email</InputLabel>
 						<Input
 							id="component-simple"
-							name="mail"
-							value={formValues.mail}
+							name="email"
+							value={formValues.email}
 							onChange={handleChange}
 						/>
 					</FormControl>

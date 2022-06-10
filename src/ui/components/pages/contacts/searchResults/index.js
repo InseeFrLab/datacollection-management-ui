@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useContext } from "react";
 import { DataGrid, frFR } from "@mui/x-data-grid";
-import { mockGetFilteredContacts } from "../../utils/api";
 import { Typography } from "@mui/material";
+import { AppContext } from "ui/appContext";
+import {filteredRows} from "core/mock/contacts"
 
 const columns = [
 	{
@@ -35,14 +36,21 @@ const columns = [
 
 export const ContactsSearchResults = ({ formValues }) => {
 	const [contactsList, setContactsList] = useState(null);
+	const {getContacts} = useContext(AppContext);
+	// useEffect(() => {
+	// 	const load = async () => {
+	// 		const { data, error } = await getContactsByParams(formValues)()();
+	// 		console.log(error);
+	// 		if (!error) setContactsList(data);
+	// 	};
+	// 	if (!contactsList) load();
+	// }, [contactsList]);
 
 	useEffect(() => {
-		const load = async () => {
-			const { data, error } = await mockGetFilteredContacts()()();
-			if (!error) setContactsList(data);
-		};
-		if (!contactsList) load();
-	}, [contactsList]);
+		setContactsList(filteredRows)
+		// getContacts().then(r=>{
+		// 	setContactsList(r);});
+	}, []);
 
 	return (
 		<>

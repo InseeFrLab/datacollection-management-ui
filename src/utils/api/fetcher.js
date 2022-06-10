@@ -9,7 +9,7 @@ const readJsonResponse = async (response) => {
 
 export const fetcher = async (url, params, token, method, body) => {
 	const headers = {
-		Accept: "application/json",
+		Accept: "application/json, text/plain, */*",
 		"Content-Type": "application/json",
 	};
 	try {

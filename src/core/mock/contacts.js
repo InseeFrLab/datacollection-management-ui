@@ -49,10 +49,10 @@ export const rows = [
 
 export const filteredRows = [
 	{
-		id: "N2BJO2L",
-		lastName: "Monahan",
-		firstName: "Chanel",
-		email: "Monahan.Chanel@cocorico.fr",
+		id: "GHPGZ0Q",
+		lastName: "Bernhard",
+		firstName: "Nana",
+		email: "Nana.Bernhard@cocorico.fr",
 		function: "Banking Director",
 		phone: "(481) 247-6789",
 		comment: "Ruination IPA",

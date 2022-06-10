@@ -1,12 +1,17 @@
+import {AppProvider} from "ui/appContext";
 import "./App.css";
-import { Router } from "./components/Router";
+import { Router } from "./ui/router";
+
 
 function App() {
-  return (
-    <div className="App">
-      <Router />
-    </div>
-  );
+	
+	return (
+		<AppProvider>
+			<div className="App">
+				<Router />
+			</div>
+		</AppProvider>	
+	);
 }
 
 export default App;

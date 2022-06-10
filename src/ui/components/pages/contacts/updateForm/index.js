@@ -1,31 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useEffect,useContext } from "react";
 import Box from "@mui/material/Box";
 import FormControl from "@mui/material/FormControl";
 import Input from "@mui/material/Input";
 import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import Select from "@mui/material/Select";
 import { Button } from "@mui/material";
-import {
-	yearItems,
-	periodItems,
-	sourceItems,
-} from "../../utils/mock/select-items";
+import { AppContext } from "ui/appContext";
+
 const defaultValues = {
 	contactId: "",
 	lastName: "",
 	firstName: "",
+	gender: "",
 	mail: "",
-	surveyUnitId: "",
-	siren: "",
-	companyName: "",
-	source: "",
-	year: "",
-	period: "",
+	phone: "",
+	comment: "",
 };
 
 export const ContactsUpdateForm = ({ idec }) => {
 	const [formValues, setFormValues] = useState(defaultValues);
+	const [contact, setContact] = useState(null);
+	const [contactUpdated, setContactUpdated] = useState(false);
+	const {getContactById} = useContext(AppContext);
+	
+	useEffect(() => {
+		getContactById(idec).then(r=>{	setContact(r);
+			setFormValues(r);});
+	}, []);
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
@@ -34,12 +34,18 @@ export const ContactsUpdateForm = ({ idec }) => {
 			[name]: value,
 		});
 	};
+
+	const updateContact = () => {
+		setContactUpdated(true);
+	};
+
 	const resetForm = () => {
 		setFormValues(defaultValues);
 	};
+
 	return (
 		<>
-			<h3>Détail du contact</h3>
+			{contactUpdated && <div>Contact mis à jour</div>}
 			<Box
 				component="form"
 				sx={{
@@ -97,7 +103,12 @@ export const ContactsUpdateForm = ({ idec }) => {
 					/>
 				</FormControl>
 			</Box>
-			<Button variant="outlined" color="primary" type="submit">
+			<Button
+				variant="outlined"
+				color="primary"
+				type="submit"
+				onClick={updateContact}
+			>
 				Valider
 			</Button>
 			<Button

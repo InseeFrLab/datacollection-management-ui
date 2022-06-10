@@ -1,10 +1,10 @@
 import React, { useState } from "react";
+import { useParams } from "react-router-dom";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import { useParams } from "react-router-dom";
-import { ContactsUpdateForm } from "../ContactsUpdateForm";
+import { ContactsUpdateForm } from "ui/components/pages/contacts/updateForm";
 
 function TabPanel(props) {
 	const { children, value, index, ...other } = props;

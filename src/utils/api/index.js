@@ -1,4 +1,4 @@
-import { rows, filteredRows, sleep } from "../mock/contacts";
+import { rows, filteredRows, sleep } from "../../core/mock/contacts";
 import { fetcher } from "./fetcher";
 
 /*const putRequest = (url) => (token) => (body) =>
@@ -8,7 +8,8 @@ const postRequest = (url) => (token) => (body) =>
 const deleteRequest = (url) => (token) => (body) =>
 	fetcher(url, token, "DELETE", body);
 */
-const getRequest = (url) => (token) => fetcher(url, token, "GET", null);
+const getRequest = (url) => (params) => (token) =>
+	fetcher(url, params, token, "GET", null);
 
 export const mockGetContacts = (apiUrl) => (id) => async (token) => {
 	await sleep(2000);
@@ -20,16 +21,17 @@ export const mockGetFilteredContacts = (apiUrl) => (id) => async (token) => {
 	return { data: filteredRows, status: 200, statusText: "ok", error: false };
 };
 
-export const getContacts = (apiUrl) => (params) => (id) => async (token) => {
-	return getRequest(
-		`https://datacollection-management-api.dev.insee.io/contacts`
-	)();
+export const getContacts = (apiUrl) => (params) => (id) => (token) => {
+	return getRequest(apiUrl)(params);
 };
 
-export const getFilteredContacts =
-	(apiUrl) => (params) => (id) => async (token) => {
-		return getRequest(
-			`https://datacollection-management-api.dev.insee.io/contacts/search`,
-			{ survey: "", name: "", idec: "" }
-		)();
-	};
+export const getContact = (apiUrl) => (params) => (id) => (token) => {
+	return getRequest(`${apiUrl}/${id}`)();
+};
+
+export const getFilteredContacts = (apiUrl) => (params) => (id) => (token) => {
+	return getRequest(
+		`https://datacollection-management-api.dev.insee.io/contacts/search`,
+		params
+	)();
+};

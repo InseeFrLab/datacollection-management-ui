@@ -1,13 +1,11 @@
 import React, { useState } from "react";
-import { ContactsSearchForm } from "../ContactsSearchForm";
-import { ContactsSearchResults } from "../ContactsSearchResults";
+import { ContactsSearchForm } from "../searchForm";
+import { ContactsSearchResults } from "../searchResults";
 
 export const ContactsSearch = () => {
 	const [formValues, setFormValues] = useState(null);
 
 	const handleOnClickSearchButton = (formValues) => {
-		console.log("toto");
-		console.log(formValues);
 		setFormValues(formValues);
 	};
 
