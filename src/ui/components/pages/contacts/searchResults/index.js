@@ -4,6 +4,7 @@ import { Typography } from "@mui/material";
 import { AppContext } from "ui/appContext";
 import {filteredRows} from "core/mock/contacts"
 
+import { CircularProgress } from "@mui/material";
 const columns = [
 	{
 		field: "id",
@@ -37,19 +38,11 @@ const columns = [
 export const ContactsSearchResults = ({ formValues }) => {
 	const [contactsList, setContactsList] = useState(null);
 	const {getContacts} = useContext(AppContext);
-	// useEffect(() => {
-	// 	const load = async () => {
-	// 		const { data, error } = await getContactsByParams(formValues)()();
-	// 		console.log(error);
-	// 		if (!error) setContactsList(data);
-	// 	};
-	// 	if (!contactsList) load();
-	// }, [contactsList]);
 
 	useEffect(() => {
 		setContactsList(filteredRows)
-		// getContacts().then(r=>{
-		// 	setContactsList(r);});
+		//getContacts().then(r=>
+		//setContactsList(r.contacts));
 	}, []);
 
 	return (
@@ -68,7 +61,7 @@ export const ContactsSearchResults = ({ formValues }) => {
 						getRowId={(row) => contactsList.indexOf(row)}
 					/>
 				)}
-				{!contactsList && <Typography>Chargement en cours ...</Typography>}
+				{!contactsList && <><Typography>Chargement en cours ...</Typography><CircularProgress /></>}
 			</div>
 		</>
 	);

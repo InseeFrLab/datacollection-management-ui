@@ -6,15 +6,13 @@ import {
 	Outlet,
 	Navigate,
 } from "react-router-dom";
-import { Header } from "ui/components/shared/header";
 import { Footer } from "ui/components/shared/footer";
-import { Menu } from "ui/components/shared/menu";
-import { BreadCrumbs } from "ui/components/shared/breadCrumbs";
 import { Users } from "ui/components/pages/users/users";
 import { ContactsSearch } from "ui/components/pages/contacts/search";
 import { ContactsDetail } from "ui/components/pages/contacts/detail";
 import { Surveys } from "ui/components/pages/surveys";
 import { Home } from "ui/components/pages/home";
+import ResponsiveAppBar from"ui/components/shared/appBar";
 
 export const Router = () => {
 	return (
@@ -25,10 +23,8 @@ export const Router = () => {
 					path="/pilotage"
 					element={
 						<>
-							<Header />
-							<Menu />
-							<BreadCrumbs />
-							<Outlet />
+							<ResponsiveAppBar/>
+														<Outlet />
 							<Footer />
 						</>
 					}

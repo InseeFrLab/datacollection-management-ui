@@ -1,18 +1,20 @@
 export const routes = [
-	{
-		id: "contacts",
-		label: "Administration des contacts",
+		{
+		id: "enquetes",
+		fullPath:"/pilotage/enquetes",
+		path:"enquetes",
+		label: "Enquêtes",
 	},
 	{
 		id: "utilisateurs",
-		label: "Administration des utilisateurs",
+		fullPath:"/pilotage/utilisateurs",
+		path:"utilisateurs",
+		label: "Utilisateurs",
 	},
 	{
-		id: "enquetes",
-		label: "Administration des enquêtes",
-	},
-	{
-		id: "accueil",
-		label: "Accueil",
+		id: "contacts",
+		fullPath:"/pilotage/contacts",
+		path:"contacts",
+		label: "Contacts",
 	},
 ];

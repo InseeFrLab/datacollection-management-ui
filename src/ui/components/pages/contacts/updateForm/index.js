@@ -11,9 +11,10 @@ const defaultValues = {
 	lastName: "",
 	firstName: "",
 	gender: "",
-	mail: "",
+	email: "",
 	phone: "",
 	comment: "",
+	function:"",
 };
 
 export const ContactsUpdateForm = ({ idec }) => {
@@ -67,6 +68,15 @@ export const ContactsUpdateForm = ({ idec }) => {
 					/>
 				</FormControl>
 				<FormControl variant="standard">
+					<InputLabel htmlFor="component-simple">Civilité</InputLabel>
+					<Input
+						id="component-simple"
+						name="gender"
+						value={formValues.gender}
+						onChange={handleChange}
+					/>
+				</FormControl>
+				<FormControl variant="standard">
 					<InputLabel htmlFor="component-simple">Nom</InputLabel>
 					<Input
 						id="component-simple"
@@ -88,8 +98,8 @@ export const ContactsUpdateForm = ({ idec }) => {
 					<InputLabel htmlFor="component-simple">Fonction</InputLabel>
 					<Input
 						id="component-simple"
-						name="position"
-						value={formValues.position}
+						name="function"
+						value={formValues.function}
 						onChange={handleChange}
 					/>
 				</FormControl>
@@ -97,8 +107,8 @@ export const ContactsUpdateForm = ({ idec }) => {
 					<InputLabel htmlFor="component-simple">Mail</InputLabel>
 					<Input
 						id="component-simple"
-						name="mail"
-						value={formValues.mail}
+						name="email"
+						value={formValues.email}
 						onChange={handleChange}
 					/>
 				</FormControl>

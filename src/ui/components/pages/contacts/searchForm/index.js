@@ -122,7 +122,7 @@ export const ContactsSearchForm = ({
 				</div>
 				<div className="form-source">
 					<FormControl>
-						<FormControl variant="standard">
+						<FormControl variant="standard" style={{minWidth: 120}}> 
 							<InputLabel htmlFor="component-simple">Source</InputLabel>
 							<Select
 								name="source"
@@ -138,7 +138,7 @@ export const ContactsSearchForm = ({
 						</FormControl>
 					</FormControl>
 					<FormControl>
-						<FormControl variant="standard">
+						<FormControl variant="standard" style={{minWidth: 120}}>
 							<InputLabel htmlFor="component-simple">
 								Période de collecte
 							</InputLabel>
@@ -156,7 +156,7 @@ export const ContactsSearchForm = ({
 						</FormControl>
 					</FormControl>
 					<FormControl>
-						<FormControl variant="standard">
+						<FormControl variant="standard" style={{minWidth: 120}}>
 							<InputLabel htmlFor="component-simple">
 								Année de collecte
 							</InputLabel>
