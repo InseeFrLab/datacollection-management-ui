@@ -26,6 +26,7 @@ export const ContactsUpdateForm = ({ idec }) => {
 	useEffect(() => {
 		getContactById(idec).then(r=>{	setContact(r);
 			setFormValues(r);});
+			// eslint-disable-next-line
 	}, []);
 
 	const handleChange = (e) => {
@@ -37,6 +38,7 @@ export const ContactsUpdateForm = ({ idec }) => {
 	};
 
 	const updateContact = () => {
+		console.log(contact)
 		setContactUpdated(true);
 	};
 

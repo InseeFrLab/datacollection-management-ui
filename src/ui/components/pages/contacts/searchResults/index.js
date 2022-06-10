@@ -1,7 +1,6 @@
-import React, { useEffect, useState,useContext } from "react";
+import React, { useEffect, useState} from "react";
 import { DataGrid, frFR } from "@mui/x-data-grid";
 import { Typography } from "@mui/material";
-import { AppContext } from "ui/appContext";
 import {filteredRows} from "core/mock/contacts"
 
 import { CircularProgress } from "@mui/material";
@@ -37,7 +36,7 @@ const columns = [
 
 export const ContactsSearchResults = ({ formValues }) => {
 	const [contactsList, setContactsList] = useState(null);
-	const {getContacts} = useContext(AppContext);
+	//const {getContacts} = useContext(AppContext);
 
 	useEffect(() => {
 		setContactsList(filteredRows)
