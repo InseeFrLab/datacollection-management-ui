@@ -1,9 +1,9 @@
-export const fetcher = (url, method, body) => {
+export const fetcher = (url, method, body,params) => {
 	const headers = {
 		Accept: "application/json, text/plain, */*",
 		"Content-Type": "application/json",
 	};
-	return fetch(url, {
+	return fetch(params ? `${url}?${new URLSearchParams(params)}` : url, {
 		headers: headers,
 		method,
 		body: body ? JSON.stringify(body) : null,

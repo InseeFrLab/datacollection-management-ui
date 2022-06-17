@@ -1,9 +1,11 @@
-import React, { useEffect, useState} from "react";
+import React, { useEffect, useState,useContext} from "react";
 import { DataGrid, frFR } from "@mui/x-data-grid";
 import { Typography } from "@mui/material";
-import {filteredRows} from "core/mock/contacts"
-
 import { CircularProgress } from "@mui/material";
+//import {filteredRows} from "core/mock/contacts"
+import {AppContext} from "ui/appContext"
+
+
 const columns = [
 	{
 		field: "id",
@@ -36,12 +38,16 @@ const columns = [
 
 export const ContactsSearchResults = ({ formValues }) => {
 	const [contactsList, setContactsList] = useState(null);
-	//const {getContacts} = useContext(AppContext);
+	const {getContacts} = useContext(AppContext);
+
+	const searchParams={...formValues, pageNo:0,pageSize:10}
 
 	useEffect(() => {
-		setContactsList(filteredRows)
-		//getContacts().then(r=>
-		//setContactsList(r.contacts));
+		console.log(searchParams)
+		//setContactsList(filteredRows)
+		getContacts(formValues).then(r=>{
+			setContactsList(r._embedded.contacts)	});	
+			// eslint-disable-next-line
 	}, []);
 
 	return (
