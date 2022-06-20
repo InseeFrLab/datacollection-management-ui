@@ -1,4 +1,4 @@
-export const fetcher = (url, method, body,params) => {
+export const fetcher = (url, method, body, params) => {
 	const headers = {
 		Accept: "application/json, text/plain, */*",
 		"Content-Type": "application/json",

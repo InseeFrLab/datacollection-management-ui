@@ -51,6 +51,7 @@ export const ContactsDetail = () => {
 						<Tab label="Mettre à jour le contact" {...a11yProps(0)} />
 						<Tab label="Renouveler le mot de passe" {...a11yProps(1)} />
 						<Tab label="Associer / dissocier des droits" {...a11yProps(2)} />
+						<Tab label="Consulter une unité enquêtée" {...a11yProps(3)}/>
 					</Tabs>
 				</Box>
 				<TabPanel value={value} index={0}>
@@ -61,6 +62,9 @@ export const ContactsDetail = () => {
 				</TabPanel>
 				<TabPanel value={value} index={2}>
 					Associer / dissocier des droits
+				</TabPanel>
+				<TabPanel value={value} index={3}>
+					Consulter une unité enquêtée
 				</TabPanel>
 			</Box>
 		</>

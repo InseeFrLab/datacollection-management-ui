@@ -7,7 +7,7 @@ import { Button } from "@mui/material";
 import { AppContext } from "ui/appContext";
 
 const defaultValues = {
-	contactId: "",
+	identifier: "",
 	lastName: "",
 	firstName: "",
 	gender: "",
@@ -19,13 +19,12 @@ const defaultValues = {
 
 export const ContactsUpdateForm = ({ idec }) => {
 	const [formValues, setFormValues] = useState(defaultValues);
-	const [contact, setContact] = useState(null);
-	const [contactUpdated, setContactUpdated] = useState(false);
-	const {getContactById} = useContext(AppContext);
+	const [contactHasBeenUpdated, setcontactHasBeenUpdated] = useState(false);
+	const {getContactById,updateContact} = useContext(AppContext);
 	
 	useEffect(() => {
-		getContactById(idec).then(r=>{	setContact(r);
-			setFormValues(r);});
+		getContactById(idec).then(r=>	
+			setFormValues(r));
 			// eslint-disable-next-line
 	}, []);
 
@@ -37,9 +36,10 @@ export const ContactsUpdateForm = ({ idec }) => {
 		});
 	};
 
-	const updateContact = () => {
-		console.log(contact)
-		setContactUpdated(true);
+	const handleUpdateContact = () => {
+		const {identifier,...contactInfos}=formValues
+		updateContact(idec, contactInfos).then(r=>setcontactHasBeenUpdated(true))
+		
 	};
 
 	const resetForm = () => {
@@ -48,7 +48,7 @@ export const ContactsUpdateForm = ({ idec }) => {
 
 	return (
 		<>
-			{contactUpdated && <div>Contact mis à jour</div>}
+			{contactHasBeenUpdated && <div>Contact mis à jour</div>}
 			<Box
 				component="form"
 				sx={{
@@ -61,7 +61,7 @@ export const ContactsUpdateForm = ({ idec }) => {
 					<InputLabel htmlFor="component-simple">Idec</InputLabel>
 					<Input
 						id="filled-read-only-input"
-						name="contactId"
+						name="identifier"
 						value={idec}
 						onChange={handleChange}
 						InputProps={{
@@ -119,7 +119,7 @@ export const ContactsUpdateForm = ({ idec }) => {
 				variant="outlined"
 				color="primary"
 				type="submit"
-				onClick={updateContact}
+				onClick={handleUpdateContact}
 			>
 				Valider
 			</Button>

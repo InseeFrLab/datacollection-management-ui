@@ -8,24 +8,24 @@ import {AppContext} from "ui/appContext"
 
 const columns = [
 	{
-		field: "id",
+		field: "identifier",
 		headerName: "Idec",
-		width: 80,
+		width: 200,
 		renderCell: (cellValues) => {
 			return (
-				<a href={`/pilotage/contacts/${cellValues.row.id}`} rel="noreferrer">
-					{cellValues.row.id}
+				<a href={`/pilotage/contacts/${cellValues.row.identifier}`} rel="noreferrer">
+					{cellValues.row.identifier}
 				</a>
 			);
 		},
 	},
-	{ field: "lastName", headerName: "Nom", width: 200 },
-	{ field: "firstName", headerName: "Prénom", width: 200 },
+	{ field: "lastName", headerName: "Nom", width: 300 },
+	{ field: "firstName", headerName: "Prénom", width: 300 },
 	{ field: "email", headerName: "Email", width: 300 },
 	{
 		field: "campaign",
 		headerName: "Campagne / Unité enquêtée",
-		width: 30,
+		width: 100,
 		renderCell: (cellValues) => {
 			return (
 				<a href={`/${cellValues.row.access}`} target="_blank" rel="noreferrer">
@@ -43,10 +43,8 @@ export const ContactsSearchResults = ({ formValues }) => {
 	const searchParams={...formValues, pageNo:0,pageSize:10}
 
 	useEffect(() => {
-		console.log(searchParams)
-		//setContactsList(filteredRows)
-		getContacts(formValues).then(r=>{
-			setContactsList(r._embedded.contacts)	});	
+		getContacts(searchParams).then(r=>
+			setContactsList(r.content));	
 			// eslint-disable-next-line
 	}, []);
 
@@ -57,7 +55,7 @@ export const ContactsSearchResults = ({ formValues }) => {
 				Cliquez sur l'identifiant du contact pour consulter ou modifier ses
 				coordonnées.
 			</p>
-			<div style={{ height: 400, width: "80%" }}>
+			<div style={{ height: 400, width: "90%" }}>
 				{contactsList && (
 					<DataGrid
 						localeText={frFR.components.MuiDataGrid.defaultProps.localeText}

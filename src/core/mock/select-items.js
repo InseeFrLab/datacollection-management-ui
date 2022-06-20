@@ -1,7 +1,7 @@
 export const sourceItems = [
 	{
 		key: 1,
-		value: "TIC",
+		value: "ARMADILLO",
 		label: "Technologie de l'information et de la communication",
 	},
 	{ key: 2, value: "CAMPING", label: "Fréquentation hôtelière de pleine air" },
