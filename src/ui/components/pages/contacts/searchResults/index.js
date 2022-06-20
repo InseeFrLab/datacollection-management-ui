@@ -1,7 +1,5 @@
 import React, { useEffect, useState,useContext} from "react";
 import { DataGrid, frFR } from "@mui/x-data-grid";
-import { Typography } from "@mui/material";
-import { CircularProgress } from "@mui/material";
 //import {filteredRows} from "core/mock/contacts"
 import {AppContext} from "ui/appContext"
 
@@ -37,16 +35,22 @@ const columns = [
 ];
 
 export const ContactsSearchResults = ({ formValues }) => {
-	const [contactsList, setContactsList] = useState(null);
 	const {getContacts} = useContext(AppContext);
 
-	const searchParams={...formValues, pageNo:0,pageSize:10}
-
-	useEffect(() => {
-		getContacts(searchParams).then(r=>
-			setContactsList(r.content));	
-			// eslint-disable-next-line
-	}, []);
+	const [pageState, setPageState] = useState({
+		isLoading: false,
+		data: [],
+		total: 0,
+		page: 1,
+		pageSize: 5
+	  })
+		
+	  useEffect(() => {
+		setPageState(old => ({ ...old, isLoading: true }))
+		getContacts({...formValues,pageNo:pageState.page-1,pageSize:pageState.pageSize}).then(r=>setPageState(old => ({ ...old, isLoading: false, data: r.content, total: r.totalElements })
+		))
+	  // eslint-disable-next-line react-hooks/exhaustive-deps
+	  }, [pageState.page, pageState.pageSize])
 
 	return (
 		<>
@@ -56,15 +60,23 @@ export const ContactsSearchResults = ({ formValues }) => {
 				coordonnées.
 			</p>
 			<div style={{ height: 400, width: "90%" }}>
-				{contactsList && (
 					<DataGrid
 						localeText={frFR.components.MuiDataGrid.defaultProps.localeText}
-						rows={contactsList}
 						columns={columns}
-						getRowId={(row) => contactsList.indexOf(row)}
+						getRowId={(row) => pageState.data.indexOf(row)}
+						rows={pageState.data}
+						rowCount={pageState.total}
+						loading={pageState.isLoading}
+						rowsPerPageOptions={[5, 10, 50]}
+						pagination
+						page={pageState.page - 1}
+						pageSize={pageState.pageSize}
+						paginationMode="server"
+						onPageChange={(newPage) => {
+						  setPageState(old => ({ ...old, page: newPage + 1 }))
+						}}
+						onPageSizeChange={(newPageSize) => setPageState(old => ({ ...old, pageSize: newPageSize }))}
 					/>
-				)}
-				{!contactsList && <><Typography>Chargement en cours ...</Typography><CircularProgress /></>}
 			</div>
 		</>
 	);

@@ -14,4 +14,4 @@ spec:
     spec:
       containers:
         - name: dc-management-ui
-          image: inseefrlab/datacollection-management-ui:0.1.5
+          image: inseefrlab/datacollection-management-ui:0.1.6
