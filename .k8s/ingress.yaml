@@ -7,9 +7,9 @@ metadata:
 spec:
   tls:
     - hosts:
-        - datacollection-management-ui.dev.insee.io
+        - pilotage-enquetes.dev.insee.io
   rules:
-    - host: datacollection-management-ui.dev.insee.io
+    - host: pilotage-enquetes.dev.insee.io
       http:
         paths:
           - path: /
